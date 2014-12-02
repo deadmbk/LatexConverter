@@ -632,437 +632,442 @@ interface LatexMathConstants {
     /**
      * A token identity constant.
      */
-    public static final int ALPHA = 1124;
+    public static final int INF = 1124;
 
     /**
      * A token identity constant.
      */
-    public static final int BETA = 1125;
+    public static final int ALPHA = 1125;
 
     /**
      * A token identity constant.
      */
-    public static final int GAMMA = 1126;
+    public static final int BETA = 1126;
 
     /**
      * A token identity constant.
      */
-    public static final int DELTA = 1127;
+    public static final int GAMMA = 1127;
 
     /**
      * A token identity constant.
      */
-    public static final int EPSILON = 1128;
+    public static final int DELTA = 1128;
 
     /**
      * A token identity constant.
      */
-    public static final int VAREPSILON = 1129;
+    public static final int EPSILON = 1129;
 
     /**
      * A token identity constant.
      */
-    public static final int ZETA = 1130;
+    public static final int VAREPSILON = 1130;
 
     /**
      * A token identity constant.
      */
-    public static final int ETA = 1131;
+    public static final int ZETA = 1131;
 
     /**
      * A token identity constant.
      */
-    public static final int THETA = 1132;
+    public static final int ETA = 1132;
 
     /**
      * A token identity constant.
      */
-    public static final int VARTHETA = 1133;
+    public static final int THETA = 1133;
 
     /**
      * A token identity constant.
      */
-    public static final int KAPPA = 1134;
+    public static final int VARTHETA = 1134;
 
     /**
      * A token identity constant.
      */
-    public static final int LAMBDA = 1135;
+    public static final int KAPPA = 1135;
 
     /**
      * A token identity constant.
      */
-    public static final int MU = 1136;
+    public static final int LAMBDA = 1136;
 
     /**
      * A token identity constant.
      */
-    public static final int NU = 1137;
+    public static final int MU = 1137;
 
     /**
      * A token identity constant.
      */
-    public static final int XI = 1138;
+    public static final int NU = 1138;
 
     /**
      * A token identity constant.
      */
-    public static final int PI = 1139;
+    public static final int XI = 1139;
 
     /**
      * A token identity constant.
      */
-    public static final int VARPI = 1140;
+    public static final int PI = 1140;
 
     /**
      * A token identity constant.
      */
-    public static final int RHO = 1141;
+    public static final int VARPI = 1141;
 
     /**
      * A token identity constant.
      */
-    public static final int VARRHO = 1142;
+    public static final int RHO = 1142;
 
     /**
      * A token identity constant.
      */
-    public static final int SIGMA = 1143;
+    public static final int VARRHO = 1143;
 
     /**
      * A token identity constant.
      */
-    public static final int VARSIGMA = 1144;
+    public static final int SIGMA = 1144;
 
     /**
      * A token identity constant.
      */
-    public static final int TAU = 1145;
+    public static final int VARSIGMA = 1145;
 
     /**
      * A token identity constant.
      */
-    public static final int UPSILON = 1146;
+    public static final int TAU = 1146;
 
     /**
      * A token identity constant.
      */
-    public static final int PHI = 1147;
+    public static final int UPSILON = 1147;
 
     /**
      * A token identity constant.
      */
-    public static final int VARPHI = 1148;
+    public static final int PHI = 1148;
 
     /**
      * A token identity constant.
      */
-    public static final int CHI = 1149;
+    public static final int VARPHI = 1149;
 
     /**
      * A token identity constant.
      */
-    public static final int PSI = 1150;
+    public static final int CHI = 1150;
 
     /**
      * A token identity constant.
      */
-    public static final int OMEGA = 1151;
+    public static final int PSI = 1151;
 
     /**
      * A token identity constant.
      */
-    public static final int BGAMMA = 1152;
+    public static final int OMEGA = 1152;
 
     /**
      * A token identity constant.
      */
-    public static final int BDELTA = 1153;
+    public static final int BGAMMA = 1153;
 
     /**
      * A token identity constant.
      */
-    public static final int BTHETA = 1154;
+    public static final int BDELTA = 1154;
 
     /**
      * A token identity constant.
      */
-    public static final int BLAMBDA = 1155;
+    public static final int BTHETA = 1155;
 
     /**
      * A token identity constant.
      */
-    public static final int BXI = 1156;
+    public static final int BLAMBDA = 1156;
 
     /**
      * A token identity constant.
      */
-    public static final int BPI = 1157;
+    public static final int BXI = 1157;
 
     /**
      * A token identity constant.
      */
-    public static final int BSIGMA = 1158;
+    public static final int BPI = 1158;
 
     /**
      * A token identity constant.
      */
-    public static final int BUPSILON = 1159;
+    public static final int BSIGMA = 1159;
 
     /**
      * A token identity constant.
      */
-    public static final int BPHI = 1160;
+    public static final int BUPSILON = 1160;
 
     /**
      * A token identity constant.
      */
-    public static final int BPSI = 1161;
+    public static final int BPHI = 1161;
 
     /**
      * A token identity constant.
      */
-    public static final int BOMEGA = 1162;
+    public static final int BPSI = 1162;
 
     /**
      * A token identity constant.
      */
-    public static final int DOCUMENTCLASS = 1163;
+    public static final int BOMEGA = 1163;
 
     /**
      * A token identity constant.
      */
-    public static final int USEPACKAGE = 1164;
+    public static final int DOCUMENTCLASS = 1164;
 
     /**
      * A token identity constant.
      */
-    public static final int BEGIN_ENV = 1165;
+    public static final int USEPACKAGE = 1165;
 
     /**
      * A token identity constant.
      */
-    public static final int END_ENV = 1166;
+    public static final int BEGIN_ENV = 1166;
 
     /**
      * A token identity constant.
      */
-    public static final int BEGIN_DOCUMENT = 1167;
+    public static final int END_ENV = 1167;
 
     /**
      * A token identity constant.
      */
-    public static final int END_DOCUMENT = 1168;
+    public static final int BEGIN_DOCUMENT = 1168;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_FLEQN = 1169;
+    public static final int END_DOCUMENT = 1169;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_LEQNO = 1170;
+    public static final int DOC_OPT_FLEQN = 1170;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_DRAFT = 1171;
+    public static final int DOC_OPT_LEQNO = 1171;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_LANDSCAPE = 1172;
+    public static final int DOC_OPT_DRAFT = 1172;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_FONT_10 = 1173;
+    public static final int DOC_OPT_LANDSCAPE = 1173;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_FONT_11 = 1174;
+    public static final int DOC_OPT_FONT_10 = 1174;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_FONT_12 = 1175;
+    public static final int DOC_OPT_FONT_11 = 1175;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_PAPER_LETTER = 1176;
+    public static final int DOC_OPT_FONT_12 = 1176;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_PAPER_A4 = 1177;
+    public static final int DOC_OPT_PAPER_LETTER = 1177;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_PAPER_A5 = 1178;
+    public static final int DOC_OPT_PAPER_A4 = 1178;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_PAPER_B5 = 1179;
+    public static final int DOC_OPT_PAPER_A5 = 1179;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_PAPER_EXECUTIVE = 1180;
+    public static final int DOC_OPT_PAPER_B5 = 1180;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_PAPER_LEGAL = 1181;
+    public static final int DOC_OPT_PAPER_EXECUTIVE = 1181;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_COLUMN_ONE = 1182;
+    public static final int DOC_OPT_PAPER_LEGAL = 1182;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_COLUMN_TWO = 1183;
+    public static final int DOC_OPT_COLUMN_ONE = 1183;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_PAGE_TITLE = 1184;
+    public static final int DOC_OPT_COLUMN_TWO = 1184;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_PAGE_NOTITLE = 1185;
+    public static final int DOC_OPT_PAGE_TITLE = 1185;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_SIDE_ONE = 1186;
+    public static final int DOC_OPT_PAGE_NOTITLE = 1186;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_SIDE_TWO = 1187;
+    public static final int DOC_OPT_SIDE_ONE = 1187;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_OPEN_ANY = 1188;
+    public static final int DOC_OPT_SIDE_TWO = 1188;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_OPEN_RIGHT = 1189;
+    public static final int DOC_OPT_OPEN_ANY = 1189;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_CLASS_ARTICLE = 1190;
+    public static final int DOC_OPT_OPEN_RIGHT = 1190;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_CLASS_IEEE = 1191;
+    public static final int DOC_CLASS_ARTICLE = 1191;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_CLASS_PROC = 1192;
+    public static final int DOC_CLASS_IEEE = 1192;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_CLASS_MINIMAL = 1193;
+    public static final int DOC_CLASS_PROC = 1193;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_CLASS_REPORT = 1194;
+    public static final int DOC_CLASS_MINIMAL = 1194;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_CLASS_BOOK = 1195;
+    public static final int DOC_CLASS_REPORT = 1195;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_CLASS_SLIDES = 1196;
+    public static final int DOC_CLASS_BOOK = 1196;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_CLASS_MEMOIR = 1197;
+    public static final int DOC_CLASS_SLIDES = 1197;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_CLASS_LETTER = 1198;
+    public static final int DOC_CLASS_MEMOIR = 1198;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_CLASS_BEAMER = 1199;
+    public static final int DOC_CLASS_LETTER = 1199;
 
     /**
      * A token identity constant.
      */
-    public static final int MATH_BEGIN = 1200;
+    public static final int DOC_CLASS_BEAMER = 1200;
 
     /**
      * A token identity constant.
      */
-    public static final int MATH_END = 1201;
+    public static final int MATH_BEGIN = 1201;
 
     /**
      * A token identity constant.
      */
-    public static final int DISPLAYMATH_BEGIN = 1202;
+    public static final int MATH_END = 1202;
 
     /**
      * A token identity constant.
      */
-    public static final int DISPLAYMATH_END = 1203;
+    public static final int DISPLAYMATH_BEGIN = 1203;
 
     /**
      * A token identity constant.
      */
-    public static final int EQUATION_BEGIN = 1204;
+    public static final int DISPLAYMATH_END = 1204;
 
     /**
      * A token identity constant.
      */
-    public static final int EQUATION_END = 1205;
+    public static final int EQUATION_BEGIN = 1205;
 
     /**
      * A token identity constant.
      */
-    public static final int EQUATION_A_BEGIN = 1206;
+    public static final int EQUATION_END = 1206;
 
     /**
      * A token identity constant.
      */
-    public static final int S_LPARENTHESIS = 1207;
+    public static final int EQUATION_A_BEGIN = 1207;
 
     /**
      * A token identity constant.
      */
-    public static final int S_RPARENTHESIS = 1208;
+    public static final int S_LPARENTHESIS = 1208;
 
     /**
      * A token identity constant.
      */
-    public static final int S_LBRACKET = 1209;
+    public static final int S_RPARENTHESIS = 1209;
 
     /**
      * A token identity constant.
      */
-    public static final int S_RBRACKET = 1210;
+    public static final int S_LBRACKET = 1210;
+
+    /**
+     * A token identity constant.
+     */
+    public static final int S_RBRACKET = 1211;
 
     /**
      * A production node identity constant.
@@ -1312,7 +1317,7 @@ interface LatexMathConstants {
     /**
      * A production node identity constant.
      */
-    public static final int SPECIAL_SYMBOLS = 2050;
+    public static final int SPECIAL_SYMBOL = 2050;
 
     /**
      * A production node identity constant.
@@ -1322,30 +1327,35 @@ interface LatexMathConstants {
     /**
      * A production node identity constant.
      */
-    public static final int LOGLIKE_SYMBOLS = 2052;
+    public static final int FUNCTION = 2052;
 
     /**
      * A production node identity constant.
      */
-    public static final int CONSTRUCTIONS = 2053;
+    public static final int LOGLIKE_SYMBOL = 2053;
 
     /**
      * A production node identity constant.
      */
-    public static final int FUNCTIONS = 2054;
+    public static final int OPERATOR_IDENT = 2054;
 
     /**
      * A production node identity constant.
      */
-    public static final int PARAMETER = 2055;
+    public static final int CONSTRUCTION = 2055;
 
     /**
      * A production node identity constant.
      */
-    public static final int SUBSCRIPT = 2056;
+    public static final int PARAMETER = 2056;
 
     /**
      * A production node identity constant.
      */
-    public static final int SUPERSCRIPT = 2057;
+    public static final int SUBSCRIPT = 2057;
+
+    /**
+     * A production node identity constant.
+     */
+    public static final int SUPERSCRIPT = 2058;
 }

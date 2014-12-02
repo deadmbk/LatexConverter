@@ -46,7 +46,12 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
                 continue;
             }
 
-            if (value.startsWith("</")) {
+            if (value.startsWith("<mspace")) {
+                
+                appendTabulation();
+                mathml.append(value+"\n");
+                
+            } else if (value.startsWith("</")) {
 
                 if (indentation > 0) indentation--;
                 appendTabulation();
@@ -133,16 +138,21 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
 
         for (int i = 1; i < node.getChildCount(); i++) {
 
-            if (node.getChildAt(i).getName().equals("FactorExt") &&
-                    node.getChildAt(i-1).getName().equals("FactorExt") && 
-                    containsFirstChild(node.getChildAt(i-1), "Functions")) {
-
-                values.add("<mo>&ApplyFunction;</mo>");
-            } else if (node.getChildAt(i).getName().equals("FactorExt") &&
-                    !node.getChildAt(i-1).getName().equals("BinaryOperator")) {
-
-                values.add("<mo>&InvisibleTimes;</mo>");
-            } 
+            if (node.getChildAt(i).getName().equals("FactorExt")) {
+                
+                if (node.getChildAt(i-1).getName().equals("FactorExt") && 
+                    containsFirstChild(node.getChildAt(i-1), "Function")) {
+                    
+                    values.add("<mo>&ApplyFunction;</mo>");
+                } else if (
+                        (node.getChildAt(i-1).getName().equals("FactorExt") &&
+                        !containsFirstChild(node.getChildAt(i-1), "OperatorIdent")) || 
+                        node.getChildAt(i-1).getName().equals("UnaryOperator")) {
+                    
+                    values.add("<mo>&InvisibleTimes;</mo>");
+                }
+                
+            }
 
             values.addAll(node.getChildAt(i).getAllValues());
         }
@@ -163,7 +173,9 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
         underover.add("OINTEGRAL");
         underover.add("SUM");
         underover.add("PROD");
-        underover.add("LIM");        
+        underover.add("LIM");
+        underover.add("SUP"); 
+        underover.add("INF"); 
         
         byte [] scripts = new byte[]{0, 0};
         boolean uo = false;
@@ -291,7 +303,7 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
     }
 
     @Override
-    protected Node exitConstructions(Production node) {
+    protected Node exitConstruction(Production node) {
 
         String name = node.getChildAt(0).getName();
         ArrayList values = getChildValues(node);
@@ -693,7 +705,7 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
     }
     
     @Override
-    protected Node exitSpecialSymbols(Production node) throws ParseException {
+    protected Node exitSpecialSymbol(Production node) throws ParseException {
         node.addValue("<mi>" + node.getChildAt(0).getValue(0) + "</mi>");
         return node;
     }
@@ -705,13 +717,19 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
     }
     
     @Override
-    protected Node exitLoglikeSymbols(Production node) throws ParseException {
+    protected Node exitLoglikeSymbol(Production node) throws ParseException {
         node.addValue(node.getChildAt(0).getValue(0));
         return node;
     }
     
     @Override
-    protected Node exitFunctions(Production node) throws ParseException {
+    protected Node exitFunction(Production node) throws ParseException {
+        node.addValue("<mo>" + node.getChildAt(0).getValue(0) + "</mo>");
+        return node;
+    }
+    
+    @Override
+    protected Node exitOperatorIdent(Production node) throws ParseException {
         node.addValue("<mo>" + node.getChildAt(0).getValue(0) + "</mo>");
         return node;
     }
@@ -719,7 +737,7 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
     /* ------------------------------- TOKENY ------------------------------- */
     @Override
     public void enterSBackslash(Token node) {
-        node.addValue("<br />");
+        node.addValue("<mspace linebreak=\"newline\" />");
     }
 
     @Override
@@ -1093,6 +1111,11 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
     protected void enterIm(Token node) throws ParseException {
         node.addValue("Im");
     }
+    
+    @Override
+    protected void enterPartial(Token node) throws ParseException {
+        node.addValue("&part;");
+    }
 
     /* ------------------- Log-like symbols ------------------------- */
     @Override
@@ -1188,6 +1211,11 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
     @Override
     protected void enterSup(Token node) throws ParseException {
         node.addValue("sup");
+    }
+    
+    @Override
+    protected void enterInf(Token node) throws ParseException {
+        node.addValue("inf");
     }
 
     @Override

@@ -784,6 +784,12 @@ class LatexMathTokenizer extends Tokenizer {
                                    "\\tanh");
         addPattern(pattern);
 
+        pattern = new TokenPattern(LatexMathConstants.INF,
+                                   "INF",
+                                   TokenPattern.STRING_TYPE,
+                                   "\\inf");
+        addPattern(pattern);
+
         pattern = new TokenPattern(LatexMathConstants.ALPHA,
                                    "ALPHA",
                                    TokenPattern.STRING_TYPE,
