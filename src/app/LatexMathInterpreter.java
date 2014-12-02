@@ -93,25 +93,27 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
     @Override
     protected Node exitStatement(Production node) throws ParseException { 
   
-        /*ArrayList values = getChildValues(node); 
+        ArrayList values = getChildValues(node); 
         String exp = (String) values.get(0); 
-        System.out.println(exp); 
-        if (values.size() > 1 && !exp.equals("<mrow>")) { 
+        int count = node.getChildCount();
+        //System.out.println(exp); 
+        if (count > 1) { 
               
             values.add(0, "<mrow>"); 
             values.add("</mrow>"); 
               
-        }*/
+        }
 
-        node.addValues(getChildValues(node));
+        node.addValues(values);
         return node;
 
     }
 
     @Override
     protected Node exitExpression(Production node) throws ParseException {
-
+        
         ArrayList values = getChildValues(node);
+        int count = node.getChildCount();
         if (values.size() > 1) {
 
             values.add(0, "<mrow>");
@@ -125,8 +127,7 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
 
     @Override
     protected Node exitComponent(Production node) {
-
-        
+      
         ArrayList values = new ArrayList();
         values.addAll(node.getChildAt(0).getAllValues());
 
@@ -136,7 +137,7 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
                     node.getChildAt(i-1).getName().equals("FactorExt") && 
                     containsFirstChild(node.getChildAt(i-1), "Functions")) {
 
-                values.add("<mo>&applyFunction;</mo>");
+                values.add("<mo>&ApplyFunction;</mo>");
             } else if (node.getChildAt(i).getName().equals("FactorExt") &&
                     !node.getChildAt(i-1).getName().equals("BinaryOperator")) {
 
@@ -162,14 +163,11 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
         underover.add("OINTEGRAL");
         underover.add("SUM");
         underover.add("PROD");
-        underover.add("LIM");
-        
-        
+        underover.add("LIM");        
         
         byte [] scripts = new byte[]{0, 0};
         boolean uo = false;
 
-        
         Node child = node;
         while (child.getChildCount() > 0) {
             child = child.getChildAt(0);
@@ -182,15 +180,11 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
         for (int i = 0; i < node.getChildCount(); i++) {
             
             String name = node.getChildAt(i).getName();
-                
-                
-                
-
-                if (name.equals("Subscript")) {
-                    scripts[0] = 1;
-                } else if (name.equals("Superscript")) {
-                    scripts[1] = 2;
-                }
+            if (name.equals("Subscript")) {
+                scripts[0] = 1;
+            } else if (name.equals("Superscript")) {
+                scripts[1] = 2;
+            }
             
         }
         
@@ -214,9 +208,7 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
                 case 3: markupName = "<msubsup>"; break;
                 default: markupName = ""; break;
             }
-            
-            
-            
+    
         }
         
         if (result > 0) {

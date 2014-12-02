@@ -107,7 +107,7 @@ INFTY			= "\infty"
 CDOTS			= "\cdots" 
 EMPTYSET		= "\emptyset"
 VARNOTHING		= "\varnothing"
-PARTIAL			= "\partial" // nowe
+PARTIAL			= "\partial"
 
 // Functions
 FRAC			= "\frac"
