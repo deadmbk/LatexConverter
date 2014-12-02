@@ -1327,30 +1327,25 @@ interface LatexMathConstants {
     /**
      * A production node identity constant.
      */
-    public static final int FUNCTION_OPERATORS = 2053;
+    public static final int CONSTRUCTIONS = 2053;
 
     /**
      * A production node identity constant.
      */
-    public static final int CONSTRUCTIONS = 2054;
+    public static final int FUNCTIONS = 2054;
 
     /**
      * A production node identity constant.
      */
-    public static final int FUNCTION_IDENT = 2055;
+    public static final int PARAMETER = 2055;
 
     /**
      * A production node identity constant.
      */
-    public static final int PARAMETER = 2056;
+    public static final int SUBSCRIPT = 2056;
 
     /**
      * A production node identity constant.
      */
-    public static final int SUBSCRIPT = 2057;
-
-    /**
-     * A production node identity constant.
-     */
-    public static final int SUPERSCRIPT = 2058;
+    public static final int SUPERSCRIPT = 2057;
 }

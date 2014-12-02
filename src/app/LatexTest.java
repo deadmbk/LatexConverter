@@ -75,7 +75,7 @@ public class LatexTest {
         try {
             parseLatex = parseArithmetic(source.toString());
             //Wypisanie drzewa składniowego
-            PrintWriter a = new PrintWriter("src/tree.txt");
+            PrintWriter a = new PrintWriter("src/examples/tree.txt");
             parseLatex.printTo(a);
 
             // Analiza i konwersja na MathML

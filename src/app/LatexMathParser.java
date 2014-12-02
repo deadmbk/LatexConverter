@@ -860,12 +860,6 @@ class LatexMathParser extends RecursiveDescentParser {
         alt.addProduction(LatexMathConstants.CONSTRUCTIONS, 1, 1);
         pattern.addAlternative(alt);
         alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.FUNCTION_IDENT, 1, 1);
-        alt.addProduction(LatexMathConstants.SUBSCRIPT, 0, 1);
-        alt.addProduction(LatexMathConstants.SUPERSCRIPT, 0, 1);
-        alt.addProduction(LatexMathConstants.PARAMETER, 0, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
         alt.addProduction(LatexMathConstants.FACTOR, 1, 1);
         alt.addProduction(LatexMathConstants.SUBSCRIPT, 0, 1);
         alt.addProduction(LatexMathConstants.SUPERSCRIPT, 0, 1);
@@ -974,13 +968,18 @@ class LatexMathParser extends RecursiveDescentParser {
         alt.addToken(LatexMathConstants.S_RBRACE, 1, 1);
         pattern.addAlternative(alt);
         alt = new ProductionPatternAlternative();
+        alt.addToken(LatexMathConstants.L_CURLY_BRACKET, 1, 1);
+        alt.addProduction(LatexMathConstants.EXPRESSION, 1, 1);
+        alt.addToken(LatexMathConstants.R_CURLY_BRACKET, 1, 1);
+        pattern.addAlternative(alt);
+        alt = new ProductionPatternAlternative();
         alt.addProduction(LatexMathConstants.SPECIAL_SYMBOLS, 1, 1);
         pattern.addAlternative(alt);
         alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.FUNCTION_OPERATORS, 1, 1);
+        alt.addProduction(LatexMathConstants.GREEK, 1, 1);
         pattern.addAlternative(alt);
         alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.GREEK, 1, 1);
+        alt.addProduction(LatexMathConstants.FUNCTIONS, 1, 1);
         pattern.addAlternative(alt);
         addPattern(pattern);
 
@@ -1191,22 +1190,6 @@ class LatexMathParser extends RecursiveDescentParser {
         pattern.addAlternative(alt);
         addPattern(pattern);
 
-        pattern = new ProductionPattern(LatexMathConstants.FUNCTION_OPERATORS,
-                                        "FunctionOperators");
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.INTEGRAL, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.SUM, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.PROD, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.OINTEGRAL, 1, 1);
-        pattern.addAlternative(alt);
-        addPattern(pattern);
-
         pattern = new ProductionPattern(LatexMathConstants.CONSTRUCTIONS,
                                         "Constructions");
         alt = new ProductionPatternAlternative();
@@ -1221,8 +1204,8 @@ class LatexMathParser extends RecursiveDescentParser {
         pattern.addAlternative(alt);
         addPattern(pattern);
 
-        pattern = new ProductionPattern(LatexMathConstants.FUNCTION_IDENT,
-                                        "FunctionIdent");
+        pattern = new ProductionPattern(LatexMathConstants.FUNCTIONS,
+                                        "Functions");
         alt = new ProductionPatternAlternative();
         alt.addProduction(LatexMathConstants.LOGLIKE_SYMBOLS, 1, 1);
         pattern.addAlternative(alt);
@@ -1231,6 +1214,18 @@ class LatexMathParser extends RecursiveDescentParser {
         pattern.addAlternative(alt);
         alt = new ProductionPatternAlternative();
         alt.addToken(LatexMathConstants.IM, 1, 1);
+        pattern.addAlternative(alt);
+        alt = new ProductionPatternAlternative();
+        alt.addToken(LatexMathConstants.INTEGRAL, 1, 1);
+        pattern.addAlternative(alt);
+        alt = new ProductionPatternAlternative();
+        alt.addToken(LatexMathConstants.SUM, 1, 1);
+        pattern.addAlternative(alt);
+        alt = new ProductionPatternAlternative();
+        alt.addToken(LatexMathConstants.PROD, 1, 1);
+        pattern.addAlternative(alt);
+        alt = new ProductionPatternAlternative();
+        alt.addToken(LatexMathConstants.OINTEGRAL, 1, 1);
         pattern.addAlternative(alt);
         addPattern(pattern);
 
@@ -1246,7 +1241,7 @@ class LatexMathParser extends RecursiveDescentParser {
         alt.addProduction(LatexMathConstants.SPECIAL_SYMBOLS, 1, 1);
         pattern.addAlternative(alt);
         alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.FUNCTION_OPERATORS, 1, 1);
+        alt.addProduction(LatexMathConstants.FUNCTIONS, 1, 1);
         pattern.addAlternative(alt);
         alt = new ProductionPatternAlternative();
         alt.addProduction(LatexMathConstants.GREEK, 1, 1);
@@ -1458,7 +1453,9 @@ class LatexMathParser extends RecursiveDescentParser {
         pattern.setSynthetic(true);
         alt = new ProductionPatternAlternative();
         alt.addProduction(LatexMathConstants.BINARY_OPERATOR, 0, 1);
-        alt.addProduction(LatexMathConstants.COMPONENT, 1, 1);
+        alt.addProduction(LatexMathConstants.UNARY_OPERATOR_LEFT, 0, 1);
+        alt.addProduction(LatexMathConstants.FACTOR_EXT, 1, 1);
+        alt.addProduction(LatexMathConstants.UNARY_OPERATOR, 0, 1);
         pattern.addAlternative(alt);
         addPattern(pattern);
 

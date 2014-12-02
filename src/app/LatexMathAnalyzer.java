@@ -809,14 +809,11 @@ abstract class LatexMathAnalyzer extends Analyzer {
         case LatexMathConstants.LOGLIKE_SYMBOLS:
             enterLoglikeSymbols((Production) node);
             break;
-        case LatexMathConstants.FUNCTION_OPERATORS:
-            enterFunctionOperators((Production) node);
-            break;
         case LatexMathConstants.CONSTRUCTIONS:
             enterConstructions((Production) node);
             break;
-        case LatexMathConstants.FUNCTION_IDENT:
-            enterFunctionIdent((Production) node);
+        case LatexMathConstants.FUNCTIONS:
+            enterFunctions((Production) node);
             break;
         case LatexMathConstants.PARAMETER:
             enterParameter((Production) node);
@@ -1362,12 +1359,10 @@ abstract class LatexMathAnalyzer extends Analyzer {
             return exitGreek((Production) node);
         case LatexMathConstants.LOGLIKE_SYMBOLS:
             return exitLoglikeSymbols((Production) node);
-        case LatexMathConstants.FUNCTION_OPERATORS:
-            return exitFunctionOperators((Production) node);
         case LatexMathConstants.CONSTRUCTIONS:
             return exitConstructions((Production) node);
-        case LatexMathConstants.FUNCTION_IDENT:
-            return exitFunctionIdent((Production) node);
+        case LatexMathConstants.FUNCTIONS:
+            return exitFunctions((Production) node);
         case LatexMathConstants.PARAMETER:
             return exitParameter((Production) node);
         case LatexMathConstants.SUBSCRIPT:
@@ -1546,14 +1541,11 @@ abstract class LatexMathAnalyzer extends Analyzer {
         case LatexMathConstants.LOGLIKE_SYMBOLS:
             childLoglikeSymbols(node, child);
             break;
-        case LatexMathConstants.FUNCTION_OPERATORS:
-            childFunctionOperators(node, child);
-            break;
         case LatexMathConstants.CONSTRUCTIONS:
             childConstructions(node, child);
             break;
-        case LatexMathConstants.FUNCTION_IDENT:
-            childFunctionIdent(node, child);
+        case LatexMathConstants.FUNCTIONS:
+            childFunctions(node, child);
             break;
         case LatexMathConstants.PARAMETER:
             childParameter(node, child);
@@ -8729,47 +8721,6 @@ abstract class LatexMathAnalyzer extends Analyzer {
      *
      * @throws ParseException if the node analysis discovered errors
      */
-    protected void enterFunctionOperators(Production node)
-        throws ParseException {
-    }
-
-    /**
-     * Called when exiting a parse tree node.
-     *
-     * @param node           the node being exited
-     *
-     * @return the node to add to the parse tree, or
-     *         null if no parse tree should be created
-     *
-     * @throws ParseException if the node analysis discovered errors
-     */
-    protected Node exitFunctionOperators(Production node)
-        throws ParseException {
-
-        return node;
-    }
-
-    /**
-     * Called when adding a child to a parse tree node.
-     *
-     * @param node           the parent node
-     * @param child          the child node, or null
-     *
-     * @throws ParseException if the node analysis discovered errors
-     */
-    protected void childFunctionOperators(Production node, Node child)
-        throws ParseException {
-
-        node.addChild(child);
-    }
-
-    /**
-     * Called when entering a parse tree node.
-     *
-     * @param node           the node being entered
-     *
-     * @throws ParseException if the node analysis discovered errors
-     */
     protected void enterConstructions(Production node)
         throws ParseException {
     }
@@ -8811,7 +8762,7 @@ abstract class LatexMathAnalyzer extends Analyzer {
      *
      * @throws ParseException if the node analysis discovered errors
      */
-    protected void enterFunctionIdent(Production node)
+    protected void enterFunctions(Production node)
         throws ParseException {
     }
 
@@ -8825,7 +8776,7 @@ abstract class LatexMathAnalyzer extends Analyzer {
      *
      * @throws ParseException if the node analysis discovered errors
      */
-    protected Node exitFunctionIdent(Production node)
+    protected Node exitFunctions(Production node)
         throws ParseException {
 
         return node;
@@ -8839,7 +8790,7 @@ abstract class LatexMathAnalyzer extends Analyzer {
      *
      * @throws ParseException if the node analysis discovered errors
      */
-    protected void childFunctionIdent(Production node, Node child)
+    protected void childFunctions(Production node, Node child)
         throws ParseException {
 
         node.addChild(child);

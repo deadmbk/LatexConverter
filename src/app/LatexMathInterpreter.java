@@ -119,7 +119,6 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
 
         }
 
-        
         node.addValues(values);
         return node;
     }
@@ -133,87 +132,18 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
 
         for (int i = 1; i < node.getChildCount(); i++) {
 
-            if (node.getChildAt(i).getName().equals("FactorExt") ||
-                node.getChildAt(i).getChildAt(0).getName().equals("FactorExt") &&
+            if (node.getChildAt(i).getName().equals("FactorExt") &&
                     node.getChildAt(i-1).getName().equals("FactorExt") && 
-                    node.getChildAt(i-1).getChildAt(0).getName().equals("FunctionIdent")) {
+                    containsFirstChild(node.getChildAt(i-1), "Functions")) {
 
                 values.add("<mo>&applyFunction;</mo>");
-            } else if (node.getChildAt(i).getName().equals("FactorExt") ||
-                node.getChildAt(i).getChildAt(0).getName().equals("FactorExt") &&
+            } else if (node.getChildAt(i).getName().equals("FactorExt") &&
                     !node.getChildAt(i-1).getName().equals("BinaryOperator")) {
 
                 values.add("<mo>&InvisibleTimes;</mo>");
             } 
 
             values.addAll(node.getChildAt(i).getAllValues());
-        }
-
-        node.addValues(values);
-        return node;
-    }
-
-    @Override
-    protected Node exitParameter(Production node) {
-
-        int count = node.getChildCount();
-        ArrayList values = new ArrayList();
-
-        for (int i = 0; i < count; i++) {
-
-            Node child = node.getChildAt(i);
-            if (child.getName().equals("L_CURLY_BRACKET") ||
-                    child.getName().equals("R_CURLY_BRACKET")) {
-                continue;
-            }
-
-            if (child.getName().equals("DIGIT")) {
-                values.add("<mn>" + child.getValue(0) + "</mn>");
-            } else {
-                values.addAll(child.getAllValues());
-            }
-
-        }
-
-        
-        node.addValues(values);
-        return node;
-    }
-
-    @Override
-    protected Node exitSubscript(Production node) {
-
-        ArrayList values = getChildValues(node);
-        ListIterator it = values.listIterator();
-
-        while (it.hasNext()) {
-
-            String value = (String) it.next();
-
-            if (value.equals("_")) {
-                it.remove();
-            }
-
-        }
-
-        node.addValues(values);
-        return node;
-    }
-
-    @Override
-    protected Node exitSuperscript(Production node) {
-
-        ArrayList values = getChildValues(node);
-        ListIterator it = values.listIterator();
-
-        while (it.hasNext()) {
-
-            String value = (String) it.next();
-
-            if (value.equals("^")) {
-                it.remove();
-            }
-
         }
 
         node.addValues(values);
@@ -290,12 +220,10 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
         }
         
         if (result > 0) {
+            
             values.add(0, markupName);
-            if (node.getChildAt(node.getChildCount() - 1).getName().equals("Parameter")) {
-                values.add(node.getChildCount() - 2, getEndingMarkup(markupName));
-            } else {
-                values.add(getEndingMarkup(markupName));
-            }    
+            values.add(getEndingMarkup(markupName));
+            
         }
         
         /*
@@ -340,10 +268,23 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
     @Override
     protected Node exitFactor(Production node) {
 
+        int count = node.getChildCount();
+        ArrayList values = new ArrayList();
         String mrow = "<mrow>";
-        if (node.getChildCount() > 1) {
+        
+        if (count > 1) {
 
-            ArrayList values = getChildValues(node);
+            for (int i = 0; i < count; i++) {
+
+                Node child = node.getChildAt(i);
+                if (child.getName().equals("L_CURLY_BRACKET") ||
+                        child.getName().equals("R_CURLY_BRACKET")) {
+                    continue;
+                }
+
+                values.addAll(child.getAllValues());
+            }
+            
             values.add(0, mrow);
             values.add(getEndingMarkup(mrow));
 
@@ -386,6 +327,72 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
             }
 
             values = function;
+
+        }
+
+        node.addValues(values);
+        return node;
+    }
+    
+    @Override
+    protected Node exitParameter(Production node) {
+
+        int count = node.getChildCount();
+        ArrayList values = new ArrayList();
+
+        for (int i = 0; i < count; i++) {
+
+            Node child = node.getChildAt(i);
+            if (child.getName().equals("L_CURLY_BRACKET") ||
+                    child.getName().equals("R_CURLY_BRACKET")) {
+                continue;
+            }
+
+            if (child.getName().equals("DIGIT")) {
+                values.add("<mn>" + child.getValue(0) + "</mn>");
+            } else {
+                values.addAll(child.getAllValues());
+            }
+
+        }
+
+        node.addValues(values);
+        return node;
+    }
+
+    @Override
+    protected Node exitSubscript(Production node) {
+
+        ArrayList values = getChildValues(node);
+        ListIterator it = values.listIterator();
+
+        while (it.hasNext()) {
+
+            String value = (String) it.next();
+
+            if (value.equals("_")) {
+                it.remove();
+            }
+
+        }
+
+        node.addValues(values);
+        return node;
+    }
+
+    @Override
+    protected Node exitSuperscript(Production node) {
+
+        ArrayList values = getChildValues(node);
+        ListIterator it = values.listIterator();
+
+        while (it.hasNext()) {
+
+            String value = (String) it.next();
+
+            if (value.equals("^")) {
+                it.remove();
+            }
 
         }
 
@@ -712,13 +719,7 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
     }
     
     @Override
-    protected Node exitFunctionIdent(Production node) throws ParseException {
-        node.addValue("<mo>" + node.getChildAt(0).getValue(0) + "</mo>");
-        return node;
-    }
-    
-    @Override
-    protected Node exitFunctionOperators(Production node) throws ParseException {
+    protected Node exitFunctions(Production node) throws ParseException {
         node.addValue("<mo>" + node.getChildAt(0).getValue(0) + "</mo>");
         return node;
     }
@@ -1441,5 +1442,17 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
         str.insert(1, "/");
         return str.toString();
 
+    }
+    
+    protected boolean containsFirstChild(Node node, String childName) {
+        
+        Node child = node;
+        while (child.getChildCount() > 0) {
+            child = child.getChildAt(0);
+            if (child.getName().equals(childName))
+                return true;
+        }
+        
+        return false;
     }
 } 

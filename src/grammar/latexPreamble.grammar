@@ -324,22 +324,21 @@ Statement = Expression {Relation Expression} ;
 Relation = EQUAL | NEQUAL | NEQUAL2| LT | GT | LET | GET | IN | NI | PREC | SUCC | PRECEQ | SUCCEQ | LL | GG | SUBSET | SUPSET | SUBSETEQ | SUPSETEQ | EQUIV | SIM | SIMEQ | NOTIN | NSUPSETEQ | NSUBSETEQ | COLON ;
 Expression = PlusOrMinus? Component {PlusOrMinus Component};
 PlusOrMinus = PLUS | MINUS | PM | MP ;
-Component = [UnaryOperatorLeft] FactorExt [UnaryOperator] {[BinaryOperator] Component} ;
-FactorExt = Constructions | FunctionIdent [Subscript][Superscript] Parameter? | Factor [Subscript][Superscript] ;
+Component = [UnaryOperatorLeft] FactorExt [UnaryOperator] {[BinaryOperator][UnaryOperatorLeft] FactorExt [UnaryOperator]} ;
+FactorExt = Constructions | Factor [Subscript][Superscript] ;
 BinaryOperator = SLASH | ASTERISK | TO | GETS | BMOD | TIMES | AST | DIV | LEFTARROW | RIGHTARROW | COMMA ;
 UnaryOperator = EXCLAMATION | APOSTROPHE | PRIME ;
 UnaryOperatorLeft = FORALL | EXISTS | NEXISTS ;
 
-Factor = IDENT | Number | L_PARENTHESIS Expression R_PARENTHESIS | L_BRACKET Expression R_BRACKET | L_CEIL Expression R_CEIL | L_FLOOR Expression R_FLOOR | L_ANGLE Expression R_ANGLE | S_LBRACE Expression S_RBRACE | SpecialSymbols | FunctionOperators | Greek ;
+Factor = IDENT | Number | L_PARENTHESIS Expression R_PARENTHESIS | L_BRACKET Expression R_BRACKET | L_CEIL Expression R_CEIL | L_FLOOR Expression R_FLOOR | L_ANGLE Expression R_ANGLE | S_LBRACE Expression S_RBRACE | L_CURLY_BRACKET Expression R_CURLY_BRACKET | SpecialSymbols | Greek | Functions ;
 
 SpecialSymbols = LDOTS | CDOTS | INFTY | EMPTYSET | VARNOTHING ;
 Greek =  ALPHA | BETA | GAMMA | DELTA | EPSILON | VAREPSILON | ZETA | ETA | THETA | VARTHETA | KAPPA | LAMBDA | MU | NU | XI | PI | VARPI | RHO | VARRHO | SIGMA | VARSIGMA | TAU | UPSILON | PHI | VARPHI | CHI | PSI | OMEGA | BGAMMA | BDELTA | BTHETA | BLAMBDA | BXI | BPI | BSIGMA | BUPSILON | BPHI | BPSI | BOMEGA ;
 LoglikeSymbols = ARCCOS | ARCSIN | ARCTAN | ARCCOT | COS | COSH | COT | COTH | CSC | LG | LN | LOG | SEC | SIN | SINH | TAN | TANH | ARG | EXP | LIM | SUP;
-FunctionOperators = INTEGRAL | SUM | PROD | OINTEGRAL ;
 
 Constructions = FRAC Parameter Parameter | SQRT [L_BRACKET Expression R_BRACKET] Parameter ;
-FunctionIdent = LoglikeSymbols | RE | IM ;
+Functions = LoglikeSymbols | RE | IM | INTEGRAL | SUM | PROD | OINTEGRAL ;
 
-Parameter = IDENT | DIGIT | SpecialSymbols | FunctionOperators | Greek | L_CURLY_BRACKET Statement* R_CURLY_BRACKET ;
+Parameter = IDENT | DIGIT | SpecialSymbols | Functions | Greek | L_CURLY_BRACKET Statement* R_CURLY_BRACKET ;
 Subscript = UNDERSCORE Parameter ;
 Superscript = CARET Parameter ;

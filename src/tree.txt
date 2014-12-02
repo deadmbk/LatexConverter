@@ -116,17 +116,20 @@ Document(2001)
                                                         IDENT(1001): "n", line: 9, col: 20
                                                     BinaryOperator(2046)
                                                       TO(1074): "\to", line: 9, col: 22
-                                                    FactorExt(2045)
-                                                      Factor(2049)
-                                                        SpecialSymbols(2050)
-                                                          INFTY(1088): "\infty", line: 9, col: 26
+                                                    Component(2044)
+                                                      FactorExt(2045)
+                                                        Factor(2049)
+                                                          SpecialSymbols(2050)
+                                                            INFTY(1088): "\infty", line: 9, col: 26
                                               R_CURLY_BRACKET(1043): "}", line: 9, col: 32
-                                        FactorExt(2045)
-                                          Factor(2049)
-                                            IDENT(1001): "e", line: 9, col: 34
-                                        FactorExt(2045)
-                                          Factor(2049)
-                                            IDENT(1001): "x", line: 9, col: 40
+                                        Component(2044)
+                                          FactorExt(2045)
+                                            Factor(2049)
+                                              IDENT(1001): "e", line: 9, col: 34
+                                          Component(2044)
+                                            FactorExt(2045)
+                                              Factor(2049)
+                                                IDENT(1001): "x", line: 9, col: 40
                                   R_CURLY_BRACKET(1043): "}", line: 9, col: 41
                       R_CURLY_BRACKET(1043): "}", line: 9, col: 42
           DOLLAR(1019): "$", line: 10, col: 1
@@ -144,19 +147,21 @@ Document(2001)
                     Functions(2054)
                       LoglikeSymbols(2052)
                         COS(1108): "\cos", line: 12, col: 4
-                FactorExt(2045)
-                  Factor(2049)
-                    L_PARENTHESIS(1038): "(", line: 12, col: 8
-                    Expression(2042)
-                      Component(2044)
-                        FactorExt(2045)
-                          Factor(2049)
-                            Number(2019)
-                              DIGIT(1002): "2", line: 12, col: 9
-                        FactorExt(2045)
-                          Factor(2049)
-                            IDENT(1001): "x", line: 12, col: 10
-                    R_PARENTHESIS(1039): ")", line: 12, col: 11
+                Component(2044)
+                  FactorExt(2045)
+                    Factor(2049)
+                      L_PARENTHESIS(1038): "(", line: 12, col: 8
+                      Expression(2042)
+                        Component(2044)
+                          FactorExt(2045)
+                            Factor(2049)
+                              Number(2019)
+                                DIGIT(1002): "2", line: 12, col: 9
+                          Component(2044)
+                            FactorExt(2045)
+                              Factor(2049)
+                                IDENT(1001): "x", line: 12, col: 10
+                      R_PARENTHESIS(1039): ")", line: 12, col: 11
           DOLLAR(1019): "$", line: 12, col: 13
           DOLLAR(1019): "$", line: 12, col: 14
     Content(2035)
@@ -179,25 +184,29 @@ Document(2001)
                     CARET(1021): "^", line: 13, col: 11
                     Parameter(2055)
                       IDENT(1001): "b", line: 13, col: 12
-                FactorExt(2045)
-                  Factor(2049)
-                    L_CURLY_BRACKET(1042): "{", line: 13, col: 14
-                    Expression(2042)
-                      Component(2044)
-                        FactorExt(2045)
-                          Factor(2049)
-                            Number(2019)
-                              DIGIT(1002): "2", line: 13, col: 15
-                        FactorExt(2045)
-                          Factor(2049)
-                            IDENT(1001): "x", line: 13, col: 16
-                    R_CURLY_BRACKET(1043): "}", line: 13, col: 17
-                FactorExt(2045)
-                  Factor(2049)
-                    IDENT(1001): "d", line: 13, col: 19
-                FactorExt(2045)
-                  Factor(2049)
-                    IDENT(1001): "x", line: 13, col: 20
+                Component(2044)
+                  FactorExt(2045)
+                    Factor(2049)
+                      L_CURLY_BRACKET(1042): "{", line: 13, col: 14
+                      Expression(2042)
+                        Component(2044)
+                          FactorExt(2045)
+                            Factor(2049)
+                              Number(2019)
+                                DIGIT(1002): "2", line: 13, col: 15
+                          Component(2044)
+                            FactorExt(2045)
+                              Factor(2049)
+                                IDENT(1001): "x", line: 13, col: 16
+                      R_CURLY_BRACKET(1043): "}", line: 13, col: 17
+                  Component(2044)
+                    FactorExt(2045)
+                      Factor(2049)
+                        IDENT(1001): "d", line: 13, col: 19
+                    Component(2044)
+                      FactorExt(2045)
+                        Factor(2049)
+                          IDENT(1001): "x", line: 13, col: 20
           DOLLAR(1019): "$", line: 13, col: 22
           DOLLAR(1019): "$", line: 13, col: 23
     END_DOCUMENT(1168): "\end{document}", line: 17, col: 1
