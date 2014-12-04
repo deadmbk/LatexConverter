@@ -1228,6 +1228,14 @@ class LatexMathParser extends RecursiveDescentParser {
         pattern.addAlternative(alt);
         addPattern(pattern);
 
+        pattern = new ProductionPattern(LatexMathConstants.FORMATTING_FUNCTION,
+                                        "FormattingFunction");
+        alt = new ProductionPatternAlternative();
+        alt.addToken(LatexMathConstants.MATHRM, 1, 1);
+        alt.addProduction(LatexMathConstants.PARAMETER, 1, 1);
+        pattern.addAlternative(alt);
+        addPattern(pattern);
+
         pattern = new ProductionPattern(LatexMathConstants.CONSTRUCTION,
                                         "Construction");
         alt = new ProductionPatternAlternative();
@@ -1239,6 +1247,9 @@ class LatexMathParser extends RecursiveDescentParser {
         alt.addToken(LatexMathConstants.SQRT, 1, 1);
         alt.addProduction(SUBPRODUCTION_19, 0, 1);
         alt.addProduction(LatexMathConstants.PARAMETER, 1, 1);
+        pattern.addAlternative(alt);
+        alt = new ProductionPatternAlternative();
+        alt.addProduction(LatexMathConstants.FORMATTING_FUNCTION, 1, 1);
         pattern.addAlternative(alt);
         addPattern(pattern);
 

@@ -242,14 +242,8 @@ abstract class LatexMathAnalyzer extends Analyzer {
         case LatexMathConstants.SIMEQ:
             enterSimeq((Token) node);
             break;
-        case LatexMathConstants.TO:
-            enterTo((Token) node);
-            break;
-        case LatexMathConstants.GETS:
-            enterGets((Token) node);
-            break;
-        case LatexMathConstants.BMOD:
-            enterBmod((Token) node);
+        case LatexMathConstants.APPROX:
+            enterApprox((Token) node);
             break;
         case LatexMathConstants.FORALL:
             enterForall((Token) node);
@@ -259,6 +253,15 @@ abstract class LatexMathAnalyzer extends Analyzer {
             break;
         case LatexMathConstants.NEXISTS:
             enterNexists((Token) node);
+            break;
+        case LatexMathConstants.TO:
+            enterTo((Token) node);
+            break;
+        case LatexMathConstants.GETS:
+            enterGets((Token) node);
+            break;
+        case LatexMathConstants.BMOD:
+            enterBmod((Token) node);
             break;
         case LatexMathConstants.PM:
             enterPm((Token) node);
@@ -281,6 +284,12 @@ abstract class LatexMathAnalyzer extends Analyzer {
         case LatexMathConstants.RIGHTARROW:
             enterRightarrow((Token) node);
             break;
+        case LatexMathConstants.CDOT:
+            enterCdot((Token) node);
+            break;
+        case LatexMathConstants.PRIME:
+            enterPrime((Token) node);
+            break;
         case LatexMathConstants.LDOTS:
             enterLdots((Token) node);
             break;
@@ -295,9 +304,6 @@ abstract class LatexMathAnalyzer extends Analyzer {
             break;
         case LatexMathConstants.VARNOTHING:
             enterVarnothing((Token) node);
-            break;
-        case LatexMathConstants.PARTIAL:
-            enterPartial((Token) node);
             break;
         case LatexMathConstants.FRAC:
             enterFrac((Token) node);
@@ -317,11 +323,11 @@ abstract class LatexMathAnalyzer extends Analyzer {
         case LatexMathConstants.OINTEGRAL:
             enterOintegral((Token) node);
             break;
+        case LatexMathConstants.PARTIAL:
+            enterPartial((Token) node);
+            break;
         case LatexMathConstants.MATHRM:
             enterMathrm((Token) node);
-            break;
-        case LatexMathConstants.PRIME:
-            enterPrime((Token) node);
             break;
         case LatexMathConstants.RE:
             enterRe((Token) node);
@@ -818,6 +824,9 @@ abstract class LatexMathAnalyzer extends Analyzer {
         case LatexMathConstants.OPERATOR_IDENT:
             enterOperatorIdent((Production) node);
             break;
+        case LatexMathConstants.FORMATTING_FUNCTION:
+            enterFormattingFunction((Production) node);
+            break;
         case LatexMathConstants.CONSTRUCTION:
             enterConstruction((Production) node);
             break;
@@ -987,18 +996,20 @@ abstract class LatexMathAnalyzer extends Analyzer {
             return exitSim((Token) node);
         case LatexMathConstants.SIMEQ:
             return exitSimeq((Token) node);
-        case LatexMathConstants.TO:
-            return exitTo((Token) node);
-        case LatexMathConstants.GETS:
-            return exitGets((Token) node);
-        case LatexMathConstants.BMOD:
-            return exitBmod((Token) node);
+        case LatexMathConstants.APPROX:
+            return exitApprox((Token) node);
         case LatexMathConstants.FORALL:
             return exitForall((Token) node);
         case LatexMathConstants.EXISTS:
             return exitExists((Token) node);
         case LatexMathConstants.NEXISTS:
             return exitNexists((Token) node);
+        case LatexMathConstants.TO:
+            return exitTo((Token) node);
+        case LatexMathConstants.GETS:
+            return exitGets((Token) node);
+        case LatexMathConstants.BMOD:
+            return exitBmod((Token) node);
         case LatexMathConstants.PM:
             return exitPm((Token) node);
         case LatexMathConstants.MP:
@@ -1013,6 +1024,10 @@ abstract class LatexMathAnalyzer extends Analyzer {
             return exitLeftarrow((Token) node);
         case LatexMathConstants.RIGHTARROW:
             return exitRightarrow((Token) node);
+        case LatexMathConstants.CDOT:
+            return exitCdot((Token) node);
+        case LatexMathConstants.PRIME:
+            return exitPrime((Token) node);
         case LatexMathConstants.LDOTS:
             return exitLdots((Token) node);
         case LatexMathConstants.INFTY:
@@ -1023,8 +1038,6 @@ abstract class LatexMathAnalyzer extends Analyzer {
             return exitEmptyset((Token) node);
         case LatexMathConstants.VARNOTHING:
             return exitVarnothing((Token) node);
-        case LatexMathConstants.PARTIAL:
-            return exitPartial((Token) node);
         case LatexMathConstants.FRAC:
             return exitFrac((Token) node);
         case LatexMathConstants.SQRT:
@@ -1037,10 +1050,10 @@ abstract class LatexMathAnalyzer extends Analyzer {
             return exitProd((Token) node);
         case LatexMathConstants.OINTEGRAL:
             return exitOintegral((Token) node);
+        case LatexMathConstants.PARTIAL:
+            return exitPartial((Token) node);
         case LatexMathConstants.MATHRM:
             return exitMathrm((Token) node);
-        case LatexMathConstants.PRIME:
-            return exitPrime((Token) node);
         case LatexMathConstants.RE:
             return exitRe((Token) node);
         case LatexMathConstants.IM:
@@ -1371,6 +1384,8 @@ abstract class LatexMathAnalyzer extends Analyzer {
             return exitLoglikeSymbol((Production) node);
         case LatexMathConstants.OPERATOR_IDENT:
             return exitOperatorIdent((Production) node);
+        case LatexMathConstants.FORMATTING_FUNCTION:
+            return exitFormattingFunction((Production) node);
         case LatexMathConstants.CONSTRUCTION:
             return exitConstruction((Production) node);
         case LatexMathConstants.PARAMETER:
@@ -1556,6 +1571,9 @@ abstract class LatexMathAnalyzer extends Analyzer {
             break;
         case LatexMathConstants.OPERATOR_IDENT:
             childOperatorIdent(node, child);
+            break;
+        case LatexMathConstants.FORMATTING_FUNCTION:
+            childFormattingFunction(node, child);
             break;
         case LatexMathConstants.CONSTRUCTION:
             childConstruction(node, child);
@@ -3285,7 +3303,7 @@ abstract class LatexMathAnalyzer extends Analyzer {
      *
      * @throws ParseException if the node analysis discovered errors
      */
-    protected void enterTo(Token node) throws ParseException {
+    protected void enterApprox(Token node) throws ParseException {
     }
 
     /**
@@ -3298,55 +3316,7 @@ abstract class LatexMathAnalyzer extends Analyzer {
      *
      * @throws ParseException if the node analysis discovered errors
      */
-    protected Node exitTo(Token node) throws ParseException {
-        return node;
-    }
-
-    /**
-     * Called when entering a parse tree node.
-     *
-     * @param node           the node being entered
-     *
-     * @throws ParseException if the node analysis discovered errors
-     */
-    protected void enterGets(Token node) throws ParseException {
-    }
-
-    /**
-     * Called when exiting a parse tree node.
-     *
-     * @param node           the node being exited
-     *
-     * @return the node to add to the parse tree, or
-     *         null if no parse tree should be created
-     *
-     * @throws ParseException if the node analysis discovered errors
-     */
-    protected Node exitGets(Token node) throws ParseException {
-        return node;
-    }
-
-    /**
-     * Called when entering a parse tree node.
-     *
-     * @param node           the node being entered
-     *
-     * @throws ParseException if the node analysis discovered errors
-     */
-    protected void enterBmod(Token node) throws ParseException {
-    }
-
-    /**
-     * Called when exiting a parse tree node.
-     *
-     * @param node           the node being exited
-     *
-     * @return the node to add to the parse tree, or
-     *         null if no parse tree should be created
-     *
-     * @throws ParseException if the node analysis discovered errors
-     */
-    protected Node exitBmod(Token node) throws ParseException {
+    protected Node exitApprox(Token node) throws ParseException {
         return node;
     }
 
@@ -3419,6 +3389,78 @@ abstract class LatexMathAnalyzer extends Analyzer {
      * @throws ParseException if the node analysis discovered errors
      */
     protected Node exitNexists(Token node) throws ParseException {
+        return node;
+    }
+
+    /**
+     * Called when entering a parse tree node.
+     *
+     * @param node           the node being entered
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected void enterTo(Token node) throws ParseException {
+    }
+
+    /**
+     * Called when exiting a parse tree node.
+     *
+     * @param node           the node being exited
+     *
+     * @return the node to add to the parse tree, or
+     *         null if no parse tree should be created
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected Node exitTo(Token node) throws ParseException {
+        return node;
+    }
+
+    /**
+     * Called when entering a parse tree node.
+     *
+     * @param node           the node being entered
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected void enterGets(Token node) throws ParseException {
+    }
+
+    /**
+     * Called when exiting a parse tree node.
+     *
+     * @param node           the node being exited
+     *
+     * @return the node to add to the parse tree, or
+     *         null if no parse tree should be created
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected Node exitGets(Token node) throws ParseException {
+        return node;
+    }
+
+    /**
+     * Called when entering a parse tree node.
+     *
+     * @param node           the node being entered
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected void enterBmod(Token node) throws ParseException {
+    }
+
+    /**
+     * Called when exiting a parse tree node.
+     *
+     * @param node           the node being exited
+     *
+     * @return the node to add to the parse tree, or
+     *         null if no parse tree should be created
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected Node exitBmod(Token node) throws ParseException {
         return node;
     }
 
@@ -3597,6 +3639,54 @@ abstract class LatexMathAnalyzer extends Analyzer {
      *
      * @throws ParseException if the node analysis discovered errors
      */
+    protected void enterCdot(Token node) throws ParseException {
+    }
+
+    /**
+     * Called when exiting a parse tree node.
+     *
+     * @param node           the node being exited
+     *
+     * @return the node to add to the parse tree, or
+     *         null if no parse tree should be created
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected Node exitCdot(Token node) throws ParseException {
+        return node;
+    }
+
+    /**
+     * Called when entering a parse tree node.
+     *
+     * @param node           the node being entered
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected void enterPrime(Token node) throws ParseException {
+    }
+
+    /**
+     * Called when exiting a parse tree node.
+     *
+     * @param node           the node being exited
+     *
+     * @return the node to add to the parse tree, or
+     *         null if no parse tree should be created
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected Node exitPrime(Token node) throws ParseException {
+        return node;
+    }
+
+    /**
+     * Called when entering a parse tree node.
+     *
+     * @param node           the node being entered
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
     protected void enterLdots(Token node) throws ParseException {
     }
 
@@ -3707,30 +3797,6 @@ abstract class LatexMathAnalyzer extends Analyzer {
      * @throws ParseException if the node analysis discovered errors
      */
     protected Node exitVarnothing(Token node) throws ParseException {
-        return node;
-    }
-
-    /**
-     * Called when entering a parse tree node.
-     *
-     * @param node           the node being entered
-     *
-     * @throws ParseException if the node analysis discovered errors
-     */
-    protected void enterPartial(Token node) throws ParseException {
-    }
-
-    /**
-     * Called when exiting a parse tree node.
-     *
-     * @param node           the node being exited
-     *
-     * @return the node to add to the parse tree, or
-     *         null if no parse tree should be created
-     *
-     * @throws ParseException if the node analysis discovered errors
-     */
-    protected Node exitPartial(Token node) throws ParseException {
         return node;
     }
 
@@ -3885,6 +3951,30 @@ abstract class LatexMathAnalyzer extends Analyzer {
      *
      * @throws ParseException if the node analysis discovered errors
      */
+    protected void enterPartial(Token node) throws ParseException {
+    }
+
+    /**
+     * Called when exiting a parse tree node.
+     *
+     * @param node           the node being exited
+     *
+     * @return the node to add to the parse tree, or
+     *         null if no parse tree should be created
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected Node exitPartial(Token node) throws ParseException {
+        return node;
+    }
+
+    /**
+     * Called when entering a parse tree node.
+     *
+     * @param node           the node being entered
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
     protected void enterMathrm(Token node) throws ParseException {
     }
 
@@ -3899,30 +3989,6 @@ abstract class LatexMathAnalyzer extends Analyzer {
      * @throws ParseException if the node analysis discovered errors
      */
     protected Node exitMathrm(Token node) throws ParseException {
-        return node;
-    }
-
-    /**
-     * Called when entering a parse tree node.
-     *
-     * @param node           the node being entered
-     *
-     * @throws ParseException if the node analysis discovered errors
-     */
-    protected void enterPrime(Token node) throws ParseException {
-    }
-
-    /**
-     * Called when exiting a parse tree node.
-     *
-     * @param node           the node being exited
-     *
-     * @return the node to add to the parse tree, or
-     *         null if no parse tree should be created
-     *
-     * @throws ParseException if the node analysis discovered errors
-     */
-    protected Node exitPrime(Token node) throws ParseException {
         return node;
     }
 
@@ -8826,6 +8892,47 @@ abstract class LatexMathAnalyzer extends Analyzer {
      * @throws ParseException if the node analysis discovered errors
      */
     protected void childOperatorIdent(Production node, Node child)
+        throws ParseException {
+
+        node.addChild(child);
+    }
+
+    /**
+     * Called when entering a parse tree node.
+     *
+     * @param node           the node being entered
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected void enterFormattingFunction(Production node)
+        throws ParseException {
+    }
+
+    /**
+     * Called when exiting a parse tree node.
+     *
+     * @param node           the node being exited
+     *
+     * @return the node to add to the parse tree, or
+     *         null if no parse tree should be created
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected Node exitFormattingFunction(Production node)
+        throws ParseException {
+
+        return node;
+    }
+
+    /**
+     * Called when adding a child to a parse tree node.
+     *
+     * @param node           the parent node
+     * @param child          the child node, or null
+     *
+     * @throws ParseException if the node analysis discovered errors
+     */
+    protected void childFormattingFunction(Production node, Node child)
         throws ParseException {
 
         node.addChild(child);

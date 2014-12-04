@@ -28,10 +28,10 @@ AT 				= "@"
 HASH 			= "#"
 DOLLAR 			= "$"
 PERCENT			= "%"
-CARET			= "^"	// indeks górny (potêga)
+CARET			= "^"	// superscript (power)
 AMPERSAND		= "&"
 ASTERISK		= "*"
-UNDERSCORE		= "_"	// indeks dolny
+UNDERSCORE		= "_"	// subscript
 MINUS			= "-"
 PLUS			= "+"
 EQUAL			= "="
@@ -39,7 +39,7 @@ BACKSLASH		= "\"
 VERT_BAR		= "|"
 COLON			= ":"
 SEMICOLON		= ";"
-APOSTROPHE		= "'"	// pochodna
+APOSTROPHE		= "'"	// derivative
 QUOTATION		= <<">>
 COMMA			= ","
 DOT				= "."
@@ -85,14 +85,15 @@ NOTIN			= "\notin"
 EQUIV			= "\equiv"
 SIM				= "\sim"
 SIMEQ			= "\simeq"
+APPROX			= "\approx"
 
 // Additional operators
-TO				= "\to"
-GETS			= "\gets"
-BMOD			= "\bmod"
 FORALL			= "\forall"
 EXISTS			= "\exists"
 NEXISTS			= "\nexists"
+TO				= "\to"
+GETS			= "\gets"
+BMOD			= "\bmod"
 PM				= "\pm"
 MP				= "\mp"
 DIV				= "\div"
@@ -100,6 +101,8 @@ AST				= "\ast"
 TIMES			= "\times"
 LEFTARROW		= "\leftarrow"
 RIGHTARROW		= "\rightarrow"
+CDOT			= "\cdot"
+PRIME			= "\prime" 
 
 // Additional identifiers
 LDOTS			= "\ldots"
@@ -107,7 +110,6 @@ INFTY			= "\infty"
 CDOTS			= "\cdots" 
 EMPTYSET		= "\emptyset"
 VARNOTHING		= "\varnothing"
-PARTIAL			= "\partial"
 
 // Functions
 FRAC			= "\frac"
@@ -116,10 +118,10 @@ SUM				= "\sum"
 INTEGRAL		= "\int"
 PROD			= "\prod"
 OINTEGRAL		= "\oint"
+PARTIAL			= "\partial"
 
 // Misc
 MATHRM			= "\mathrm"
-PRIME			= "\prime" 
 RE				= "\Re"
 IM				= "\Im"
 
@@ -321,6 +323,7 @@ TODO:
 
 
 
+
 Statement = Expression {Relation Expression} ;
 Relation = EQUAL | NEQUAL | NEQUAL2| LT | GT | LET | GET | IN | NI | PREC | SUCC | PRECEQ | SUCCEQ | LL | GG | SUBSET | SUPSET | SUBSETEQ | SUPSETEQ | EQUIV | SIM | SIMEQ | NOTIN | NSUPSETEQ | NSUBSETEQ | COLON ;
 Expression = PlusOrMinus? Component {PlusOrMinus Component};
@@ -331,6 +334,16 @@ BinaryOperator = SLASH | ASTERISK | TO | GETS | BMOD | TIMES | AST | DIV | LEFTA
 UnaryOperator = EXCLAMATION | APOSTROPHE | PRIME ;
 UnaryOperatorLeft = FORALL | EXISTS | NEXISTS ;
 
+/*
+Factors features:
+- When one factor follows another (implicit multiply), entity &InvisibleTimes; is placed between them (with few exceptions stated below)
+- All factors are treated as identifier ( wrapped with <mi></mi> ) unless stated otherwise
+- SpecialSymbol - treated as identifier ( wrapped with <mi></mi> )
+- Greek 		- treated as identifier ( wrapped with <mi></mi> )
+- Function 		- treated as operator ( wrapped with <mo></mo> ), entity &ApplyFunction; is placed after factor instead of &InvisibleTimes;
+- OperatorIdent - treated as operator ( wrapped with <mo></mo> ), NO entity is placed after factor
+*/
+
 Factor = IDENT | Number | L_PARENTHESIS Expression R_PARENTHESIS | L_BRACKET Expression R_BRACKET | L_CEIL Expression R_CEIL | L_FLOOR Expression R_FLOOR | L_ANGLE Expression R_ANGLE | S_LBRACE Expression S_RBRACE | L_CURLY_BRACKET Expression R_CURLY_BRACKET | SpecialSymbol | Greek | Function | OperatorIdent ;
 
 SpecialSymbol = LDOTS | CDOTS | INFTY | EMPTYSET | VARNOTHING ;
@@ -338,8 +351,9 @@ Greek =  ALPHA | BETA | GAMMA | DELTA | EPSILON | VAREPSILON | ZETA | ETA | THET
 Function = LoglikeSymbol | RE | IM ;
 LoglikeSymbol = ARCCOS | ARCSIN | ARCTAN | ARCCOT | COS | COSH | COT | COTH | CSC | INF | LG | LN | LOG | SEC | SIN | SINH | TAN | TANH | ARG | EXP | LIM | SUP ;
 OperatorIdent = INTEGRAL | SUM | PROD | OINTEGRAL | PARTIAL ;
+FormattingFunction = MATHRM Parameter ;
 
-Construction = FRAC Parameter Parameter | SQRT [L_BRACKET Expression R_BRACKET] Parameter ;
+Construction = FRAC Parameter Parameter | SQRT [L_BRACKET Expression R_BRACKET] Parameter | FormattingFunction  ;
 Parameter = IDENT | DIGIT | SpecialSymbol | Function | OperatorIdent | Greek | L_CURLY_BRACKET Statement* R_CURLY_BRACKET ;
 Subscript = UNDERSCORE Parameter ;
 Superscript = CARET Parameter ;

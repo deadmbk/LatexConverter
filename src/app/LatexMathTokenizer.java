@@ -484,22 +484,10 @@ class LatexMathTokenizer extends Tokenizer {
                                    "\\simeq");
         addPattern(pattern);
 
-        pattern = new TokenPattern(LatexMathConstants.TO,
-                                   "TO",
+        pattern = new TokenPattern(LatexMathConstants.APPROX,
+                                   "APPROX",
                                    TokenPattern.STRING_TYPE,
-                                   "\\to");
-        addPattern(pattern);
-
-        pattern = new TokenPattern(LatexMathConstants.GETS,
-                                   "GETS",
-                                   TokenPattern.STRING_TYPE,
-                                   "\\gets");
-        addPattern(pattern);
-
-        pattern = new TokenPattern(LatexMathConstants.BMOD,
-                                   "BMOD",
-                                   TokenPattern.STRING_TYPE,
-                                   "\\bmod");
+                                   "\\approx");
         addPattern(pattern);
 
         pattern = new TokenPattern(LatexMathConstants.FORALL,
@@ -518,6 +506,24 @@ class LatexMathTokenizer extends Tokenizer {
                                    "NEXISTS",
                                    TokenPattern.STRING_TYPE,
                                    "\\nexists");
+        addPattern(pattern);
+
+        pattern = new TokenPattern(LatexMathConstants.TO,
+                                   "TO",
+                                   TokenPattern.STRING_TYPE,
+                                   "\\to");
+        addPattern(pattern);
+
+        pattern = new TokenPattern(LatexMathConstants.GETS,
+                                   "GETS",
+                                   TokenPattern.STRING_TYPE,
+                                   "\\gets");
+        addPattern(pattern);
+
+        pattern = new TokenPattern(LatexMathConstants.BMOD,
+                                   "BMOD",
+                                   TokenPattern.STRING_TYPE,
+                                   "\\bmod");
         addPattern(pattern);
 
         pattern = new TokenPattern(LatexMathConstants.PM,
@@ -562,6 +568,18 @@ class LatexMathTokenizer extends Tokenizer {
                                    "\\rightarrow");
         addPattern(pattern);
 
+        pattern = new TokenPattern(LatexMathConstants.CDOT,
+                                   "CDOT",
+                                   TokenPattern.STRING_TYPE,
+                                   "\\cdot");
+        addPattern(pattern);
+
+        pattern = new TokenPattern(LatexMathConstants.PRIME,
+                                   "PRIME",
+                                   TokenPattern.STRING_TYPE,
+                                   "\\prime");
+        addPattern(pattern);
+
         pattern = new TokenPattern(LatexMathConstants.LDOTS,
                                    "LDOTS",
                                    TokenPattern.STRING_TYPE,
@@ -590,12 +608,6 @@ class LatexMathTokenizer extends Tokenizer {
                                    "VARNOTHING",
                                    TokenPattern.STRING_TYPE,
                                    "\\varnothing");
-        addPattern(pattern);
-
-        pattern = new TokenPattern(LatexMathConstants.PARTIAL,
-                                   "PARTIAL",
-                                   TokenPattern.STRING_TYPE,
-                                   "\\partial");
         addPattern(pattern);
 
         pattern = new TokenPattern(LatexMathConstants.FRAC,
@@ -634,16 +646,16 @@ class LatexMathTokenizer extends Tokenizer {
                                    "\\oint");
         addPattern(pattern);
 
+        pattern = new TokenPattern(LatexMathConstants.PARTIAL,
+                                   "PARTIAL",
+                                   TokenPattern.STRING_TYPE,
+                                   "\\partial");
+        addPattern(pattern);
+
         pattern = new TokenPattern(LatexMathConstants.MATHRM,
                                    "MATHRM",
                                    TokenPattern.STRING_TYPE,
                                    "\\mathrm");
-        addPattern(pattern);
-
-        pattern = new TokenPattern(LatexMathConstants.PRIME,
-                                   "PRIME",
-                                   TokenPattern.STRING_TYPE,
-                                   "\\prime");
         addPattern(pattern);
 
         pattern = new TokenPattern(LatexMathConstants.RE,

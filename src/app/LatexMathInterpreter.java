@@ -144,9 +144,10 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
                     containsFirstChild(node.getChildAt(i-1), "Function")) {
                     
                     values.add("<mo>&ApplyFunction;</mo>");
-                } else if (
-                        (node.getChildAt(i-1).getName().equals("FactorExt") &&
-                        !containsFirstChild(node.getChildAt(i-1), "OperatorIdent")) || 
+                } else if ((
+                        node.getChildAt(i-1).getName().equals("FactorExt") &&
+                        !containsFirstChild(node.getChildAt(i-1), "OperatorIdent") &&
+                        !containsFirstChild(node.getChildAt(i-1), "FormattingFunction")) || 
                         node.getChildAt(i-1).getName().equals("UnaryOperator")) {
                     
                     values.add("<mo>&InvisibleTimes;</mo>");
@@ -733,6 +734,12 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
         node.addValue("<mo>" + node.getChildAt(0).getValue(0) + "</mo>");
         return node;
     }
+    
+    @Override
+    protected Node exitFormattingFunction(Production node) throws ParseException {
+        node.addValues(getChildValues(node));
+        return node;
+    }
 
     /* ------------------------------- TOKENY ------------------------------- */
     @Override
@@ -983,6 +990,11 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
         node.addValue("&simeq;");
     }
     
+    @Override
+    protected void enterApprox(Token node) throws ParseException {
+        node.addValue("&approx;");
+    }
+    
     /* ------------------- Additional operators --------------------- */
     @Override
     protected void enterTo(Token node) throws ParseException {
@@ -1049,6 +1061,16 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
         node.addValue("&rarr;");
     }
     
+    @Override
+    protected void enterCdot(Token node) throws ParseException {
+        node.addValue("&sdot;");
+    }
+    
+    @Override
+    protected void enterPrime(Token node) throws ParseException {
+        node.addValue("&prime;");
+    }
+    
     /* ------------------ Special symbols ------------------------ */
     @Override
     protected void enterLdots(Token node) throws ParseException {
@@ -1098,8 +1120,8 @@ public class LatexMathInterpreter extends LatexMathAnalyzer {
     
     /* ------------------- Misc ------------------------------------- */
     @Override
-    protected void enterPrime(Token node) throws ParseException {
-        node.addValue("&prime;");
+    protected void enterMathrm(Token node) throws ParseException {
+        //node.addValue("");
     }
     
     @Override
