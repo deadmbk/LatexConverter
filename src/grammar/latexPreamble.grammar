@@ -191,8 +191,6 @@ BPHI			= "\Phi"
 BPSI			= "\Psi"
 BOMEGA			= "\Omega"
 
-
-
 // Preamble tokens
 DOCUMENTCLASS 	= "\documentclass"
 USEPACKAGE 		= "\usepackage"
@@ -201,38 +199,6 @@ END_ENV			= "\end"
 BEGIN_DOCUMENT 	= "\begin{document}"
 END_DOCUMENT 	= "\end{document}"
 
-DOC_OPT_FLEQN 			= "fleqn"
-DOC_OPT_LEQNO 			= "leqno"
-DOC_OPT_DRAFT 			= "draft"
-DOC_OPT_LANDSCAPE 		= "landscape"
-DOC_OPT_FONT_10			= "10pt"
-DOC_OPT_FONT_11			= "11pt"
-DOC_OPT_FONT_12			= "12pt"
-DOC_OPT_PAPER_LETTER 	= "letterpaper"
-DOC_OPT_PAPER_A4		= "a4paper"
-DOC_OPT_PAPER_A5		= "a5paper"
-DOC_OPT_PAPER_B5		= "b5paper"
-DOC_OPT_PAPER_EXECUTIVE	= "executivepaper"
-DOC_OPT_PAPER_LEGAL		= "legalpaper"
-DOC_OPT_COLUMN_ONE		= "onecolumn"
-DOC_OPT_COLUMN_TWO		= "twocolumn"
-DOC_OPT_PAGE_TITLE		= "titlepage"
-DOC_OPT_PAGE_NOTITLE	= "notitlepage"
-DOC_OPT_SIDE_ONE		= "oneside"
-DOC_OPT_SIDE_TWO		= "twoside"
-DOC_OPT_OPEN_ANY		= "openright"
-DOC_OPT_OPEN_RIGHT		= "openright"
-
-DOC_CLASS_ARTICLE		= "article"
-DOC_CLASS_IEEE			= "IEEEtran"
-DOC_CLASS_PROC			= "proc"
-DOC_CLASS_MINIMAL		= "minimal"
-DOC_CLASS_REPORT		= "report"
-DOC_CLASS_BOOK			= "book"
-DOC_CLASS_SLIDES		= "slides"
-DOC_CLASS_MEMOIR		= "memoir"
-DOC_CLASS_LETTER		= "letter"
-DOC_CLASS_BEAMER		= "beamer"
 
 // Math environment tokens
 MATH_BEGIN			= "\begin{math}"
@@ -249,6 +215,11 @@ S_RBRACKET			= "\]"
 
 //ANY 			= <<[^a-zA-Z0-9]>> 
 
+/************************************** PRODUCTIONS *********************************
+TODO:
+- jak znajdzie komendê np. /sec przy /section to przerywa
+*/
+
 %productions%
 Document = Preamble Body;
 
@@ -256,24 +227,13 @@ Document = Preamble Body;
 Preamble = DocumentclassDeclaration PackageDeclaration*;
 DocumentclassDeclaration = DOCUMENTCLASS DocumentOptions? DocumentClassType;
 
-DocumentClassType = L_CURLY_BRACKET Classname R_CURLY_BRACKET ;
-Classname = DOC_CLASS_ARTICLE | DOC_CLASS_IEEE | DOC_CLASS_PROC | DOC_CLASS_MINIMAL | DOC_CLASS_REPORT | DOC_CLASS_BOOK | DOC_CLASS_SLIDES | DOC_CLASS_MEMOIR | DOC_CLASS_LETTER | DOC_CLASS_BEAMER ;
-
-DocumentOptions = L_BRACKET DocumentOption (COMMA DocumentOption)* R_BRACKET;
-DocumentOption = DocumentFontsize | DocumentPapersize | DOC_OPT_FLEQN | DOC_OPT_LEQNO | DOC_OPT_DRAFT | DocumentColumns | DocumentStartPage | DocumentOutputSide | DOC_OPT_LANDSCAPE | DocumentOpen ;
-
-DocumentFontsize = DOC_OPT_FONT_10 | DOC_OPT_FONT_11 | DOC_OPT_FONT_12 ;
-DocumentPapersize = DOC_OPT_PAPER_LETTER | DOC_OPT_PAPER_A4 | DOC_OPT_PAPER_A5 | DOC_OPT_PAPER_B5 | DOC_OPT_PAPER_EXECUTIVE | DOC_OPT_PAPER_LEGAL ;
-DocumentColumns = DOC_OPT_COLUMN_ONE | DOC_OPT_COLUMN_TWO ;
-DocumentStartPage = DOC_OPT_PAGE_TITLE | DOC_OPT_PAGE_NOTITLE ;
-DocumentOutputSide = DOC_OPT_SIDE_ONE | DOC_OPT_SIDE_TWO ;
-DocumentOpen = DOC_OPT_OPEN_ANY | DOC_OPT_OPEN_RIGHT ;
+DocumentOptions = L_BRACKET Text (COMMA Text)* R_BRACKET;
+DocumentClassType = L_CURLY_BRACKET Text R_CURLY_BRACKET ;
 
 // Package
 PackageDeclaration = USEPACKAGE PackageOptions? PackageName;
 PackageOptions = L_BRACKET PackageParameter (COMMA PackageParameter)* R_BRACKET;	  // mo¿liwoœæ dodania parametrów np. margin=2cm 
 PackageName = L_CURLY_BRACKET Word (COMMA Word)* R_CURLY_BRACKET;
-
 PackageParameter = Word (EQUAL WordNumeric)?;
 
 Word = IDENT (IDENT | DIGIT)* ;
@@ -288,13 +248,12 @@ Name = (IDENT | SpecialChar) (IDENT | DIGIT | SpecialChar)* ;
 
 Text = (Word | Number | SpecialChar)+ ;
 
-
 // Commands
 Command = BACKSLASH Name CommandParameters? ;
 CommandParameters = CommandOptionalParameter* CommandRequiredParameter (CommandRequiredParameter | CommandOptionalParameter)* ;
 CommandOptionalParameter = L_BRACKET Name L_BRACKET ;
 CommandRequiredParameter = L_CURLY_BRACKET CommandContent* R_CURLY_BRACKET ;
-CommandContent = Text | Command | AllowedTokens ;
+CommandContent = Text | Command | SpecialCommand ;
 
 SpecialCommand = S_DOLLAR | S_PERCENT | S_UNDERSCORE | S_LBRACE | S_RBRACE | S_AMPERSAND | S_HASH | S_BACKSLASH	| S_BACKSLASH_A;
 
@@ -304,25 +263,11 @@ EnvironmentOptionalParameter = L_BRACKET Name R_BRACKET ;
 EnvironmentRequiredParameter = L_CURLY_BRACKET Name R_CURLY_BRACKET ;
 
 Body = BEGIN_DOCUMENT Content* END_DOCUMENT;
-Content = Command | Environment | Text | AllowedTokens | Math;
-
-/* This production allows writing keywords which exist as tokens in this grammar. It is necessary to write words like "article" or "landscape" in a document without theirs token meaning. */
-AllowedTokens = SpecialCommand | Classname | DocumentOption | Greek;
+Content = Command | Environment | Text | SpecialCommand | Math;
 
 Math = MathInline | MathDisplay | (EQUATION_A_BEGIN | EQUATION_BEGIN) (S_BACKSLASH | Statement)* EQUATION_END ;
 MathInline = MATH_BEGIN Statement* MATH_END | S_LPARENTHESIS Statement* S_RPARENTHESIS | DOLLAR Statement* DOLLAR ;
 MathDisplay = DISPLAYMATH_BEGIN (S_BACKSLASH | Statement)* DISPLAYMATH_END | S_LBRACKET (S_BACKSLASH | Statement)* S_RBRACKET | DOLLAR DOLLAR (S_BACKSLASH | Statement)* DOLLAR DOLLAR ;
-
-
-/*
-TODO:
-- parametr opcjonalny documentclass (english??)
-- caret do escape?
-- jak znajdzie komendê np. /sec przy /section to przerywa
-*/
-
-
-
 
 Statement = Expression {Relation Expression} ;
 Relation = EQUAL | NEQUAL | NEQUAL2| LT | GT | LET | GET | IN | NI | PREC | SUCC | PRECEQ | SUCCEQ | LL | GG | SUBSET | SUPSET | SUBSETEQ | SUPSETEQ | EQUIV | SIM | SIMEQ | NOTIN | NSUPSETEQ | NSUBSETEQ | COLON ;
@@ -342,6 +287,7 @@ Factors features:
 - Greek 		- treated as identifier ( wrapped with <mi></mi> )
 - Function 		- treated as operator ( wrapped with <mo></mo> ), entity &ApplyFunction; is placed after factor instead of &InvisibleTimes;
 - OperatorIdent - treated as operator ( wrapped with <mo></mo> ), NO entity is placed after factor
+- FormattingFunction - entity &InvisibleTimes; is NOT placed after function parameter
 */
 
 Factor = IDENT | Number | L_PARENTHESIS Expression R_PARENTHESIS | L_BRACKET Expression R_BRACKET | L_CEIL Expression R_CEIL | L_FLOOR Expression R_FLOOR | L_ANGLE Expression R_ANGLE | S_LBRACE Expression S_RBRACE | L_CURLY_BRACKET Expression R_CURLY_BRACKET | SpecialSymbol | Greek | Function | OperatorIdent ;

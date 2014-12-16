@@ -198,165 +198,22 @@ class LatexMathParser extends RecursiveDescentParser {
         pattern.addAlternative(alt);
         addPattern(pattern);
 
-        pattern = new ProductionPattern(LatexMathConstants.DOCUMENT_CLASS_TYPE,
-                                        "DocumentClassType");
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.L_CURLY_BRACKET, 1, 1);
-        alt.addProduction(LatexMathConstants.CLASSNAME, 1, 1);
-        alt.addToken(LatexMathConstants.R_CURLY_BRACKET, 1, 1);
-        pattern.addAlternative(alt);
-        addPattern(pattern);
-
-        pattern = new ProductionPattern(LatexMathConstants.CLASSNAME,
-                                        "Classname");
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_CLASS_ARTICLE, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_CLASS_IEEE, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_CLASS_PROC, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_CLASS_MINIMAL, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_CLASS_REPORT, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_CLASS_BOOK, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_CLASS_SLIDES, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_CLASS_MEMOIR, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_CLASS_LETTER, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_CLASS_BEAMER, 1, 1);
-        pattern.addAlternative(alt);
-        addPattern(pattern);
-
         pattern = new ProductionPattern(LatexMathConstants.DOCUMENT_OPTIONS,
                                         "DocumentOptions");
         alt = new ProductionPatternAlternative();
         alt.addToken(LatexMathConstants.L_BRACKET, 1, 1);
-        alt.addProduction(LatexMathConstants.DOCUMENT_OPTION, 1, 1);
+        alt.addProduction(LatexMathConstants.TEXT, 1, 1);
         alt.addProduction(SUBPRODUCTION_1, 0, -1);
         alt.addToken(LatexMathConstants.R_BRACKET, 1, 1);
         pattern.addAlternative(alt);
         addPattern(pattern);
 
-        pattern = new ProductionPattern(LatexMathConstants.DOCUMENT_OPTION,
-                                        "DocumentOption");
+        pattern = new ProductionPattern(LatexMathConstants.DOCUMENT_CLASS_TYPE,
+                                        "DocumentClassType");
         alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.DOCUMENT_FONTSIZE, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.DOCUMENT_PAPERSIZE, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_FLEQN, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_LEQNO, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_DRAFT, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.DOCUMENT_COLUMNS, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.DOCUMENT_START_PAGE, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.DOCUMENT_OUTPUT_SIDE, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_LANDSCAPE, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.DOCUMENT_OPEN, 1, 1);
-        pattern.addAlternative(alt);
-        addPattern(pattern);
-
-        pattern = new ProductionPattern(LatexMathConstants.DOCUMENT_FONTSIZE,
-                                        "DocumentFontsize");
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_FONT_10, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_FONT_11, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_FONT_12, 1, 1);
-        pattern.addAlternative(alt);
-        addPattern(pattern);
-
-        pattern = new ProductionPattern(LatexMathConstants.DOCUMENT_PAPERSIZE,
-                                        "DocumentPapersize");
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_PAPER_LETTER, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_PAPER_A4, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_PAPER_A5, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_PAPER_B5, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_PAPER_EXECUTIVE, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_PAPER_LEGAL, 1, 1);
-        pattern.addAlternative(alt);
-        addPattern(pattern);
-
-        pattern = new ProductionPattern(LatexMathConstants.DOCUMENT_COLUMNS,
-                                        "DocumentColumns");
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_COLUMN_ONE, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_COLUMN_TWO, 1, 1);
-        pattern.addAlternative(alt);
-        addPattern(pattern);
-
-        pattern = new ProductionPattern(LatexMathConstants.DOCUMENT_START_PAGE,
-                                        "DocumentStartPage");
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_PAGE_TITLE, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_PAGE_NOTITLE, 1, 1);
-        pattern.addAlternative(alt);
-        addPattern(pattern);
-
-        pattern = new ProductionPattern(LatexMathConstants.DOCUMENT_OUTPUT_SIDE,
-                                        "DocumentOutputSide");
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_SIDE_ONE, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_SIDE_TWO, 1, 1);
-        pattern.addAlternative(alt);
-        addPattern(pattern);
-
-        pattern = new ProductionPattern(LatexMathConstants.DOCUMENT_OPEN,
-                                        "DocumentOpen");
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_OPEN_ANY, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addToken(LatexMathConstants.DOC_OPT_OPEN_RIGHT, 1, 1);
+        alt.addToken(LatexMathConstants.L_CURLY_BRACKET, 1, 1);
+        alt.addProduction(LatexMathConstants.TEXT, 1, 1);
+        alt.addToken(LatexMathConstants.R_CURLY_BRACKET, 1, 1);
         pattern.addAlternative(alt);
         addPattern(pattern);
 
@@ -564,7 +421,7 @@ class LatexMathParser extends RecursiveDescentParser {
         alt.addProduction(LatexMathConstants.COMMAND, 1, 1);
         pattern.addAlternative(alt);
         alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.ALLOWED_TOKENS, 1, 1);
+        alt.addProduction(LatexMathConstants.SPECIAL_COMMAND, 1, 1);
         pattern.addAlternative(alt);
         addPattern(pattern);
 
@@ -651,26 +508,10 @@ class LatexMathParser extends RecursiveDescentParser {
         alt.addProduction(LatexMathConstants.TEXT, 1, 1);
         pattern.addAlternative(alt);
         alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.ALLOWED_TOKENS, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.MATH, 1, 1);
-        pattern.addAlternative(alt);
-        addPattern(pattern);
-
-        pattern = new ProductionPattern(LatexMathConstants.ALLOWED_TOKENS,
-                                        "AllowedTokens");
-        alt = new ProductionPatternAlternative();
         alt.addProduction(LatexMathConstants.SPECIAL_COMMAND, 1, 1);
         pattern.addAlternative(alt);
         alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.CLASSNAME, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.DOCUMENT_OPTION, 1, 1);
-        pattern.addAlternative(alt);
-        alt = new ProductionPatternAlternative();
-        alt.addProduction(LatexMathConstants.GREEK, 1, 1);
+        alt.addProduction(LatexMathConstants.MATH, 1, 1);
         pattern.addAlternative(alt);
         addPattern(pattern);
 
@@ -1301,7 +1142,7 @@ class LatexMathParser extends RecursiveDescentParser {
         pattern.setSynthetic(true);
         alt = new ProductionPatternAlternative();
         alt.addToken(LatexMathConstants.COMMA, 1, 1);
-        alt.addProduction(LatexMathConstants.DOCUMENT_OPTION, 1, 1);
+        alt.addProduction(LatexMathConstants.TEXT, 1, 1);
         pattern.addAlternative(alt);
         addPattern(pattern);
 

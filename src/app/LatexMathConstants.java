@@ -872,212 +872,57 @@ interface LatexMathConstants {
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_FLEQN = 1172;
+    public static final int MATH_BEGIN = 1172;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_LEQNO = 1173;
+    public static final int MATH_END = 1173;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_DRAFT = 1174;
+    public static final int DISPLAYMATH_BEGIN = 1174;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_LANDSCAPE = 1175;
+    public static final int DISPLAYMATH_END = 1175;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_FONT_10 = 1176;
+    public static final int EQUATION_BEGIN = 1176;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_FONT_11 = 1177;
+    public static final int EQUATION_END = 1177;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_FONT_12 = 1178;
+    public static final int EQUATION_A_BEGIN = 1178;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_PAPER_LETTER = 1179;
+    public static final int S_LPARENTHESIS = 1179;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_PAPER_A4 = 1180;
+    public static final int S_RPARENTHESIS = 1180;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_PAPER_A5 = 1181;
+    public static final int S_LBRACKET = 1181;
 
     /**
      * A token identity constant.
      */
-    public static final int DOC_OPT_PAPER_B5 = 1182;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_OPT_PAPER_EXECUTIVE = 1183;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_OPT_PAPER_LEGAL = 1184;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_OPT_COLUMN_ONE = 1185;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_OPT_COLUMN_TWO = 1186;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_OPT_PAGE_TITLE = 1187;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_OPT_PAGE_NOTITLE = 1188;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_OPT_SIDE_ONE = 1189;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_OPT_SIDE_TWO = 1190;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_OPT_OPEN_ANY = 1191;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_OPT_OPEN_RIGHT = 1192;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_CLASS_ARTICLE = 1193;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_CLASS_IEEE = 1194;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_CLASS_PROC = 1195;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_CLASS_MINIMAL = 1196;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_CLASS_REPORT = 1197;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_CLASS_BOOK = 1198;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_CLASS_SLIDES = 1199;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_CLASS_MEMOIR = 1200;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_CLASS_LETTER = 1201;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DOC_CLASS_BEAMER = 1202;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int MATH_BEGIN = 1203;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int MATH_END = 1204;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DISPLAYMATH_BEGIN = 1205;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int DISPLAYMATH_END = 1206;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int EQUATION_BEGIN = 1207;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int EQUATION_END = 1208;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int EQUATION_A_BEGIN = 1209;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int S_LPARENTHESIS = 1210;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int S_RPARENTHESIS = 1211;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int S_LBRACKET = 1212;
-
-    /**
-     * A token identity constant.
-     */
-    public static final int S_RBRACKET = 1213;
+    public static final int S_RBRACKET = 1182;
 
     /**
      * A production node identity constant.
@@ -1097,280 +942,235 @@ interface LatexMathConstants {
     /**
      * A production node identity constant.
      */
-    public static final int DOCUMENT_CLASS_TYPE = 2004;
+    public static final int DOCUMENT_OPTIONS = 2004;
 
     /**
      * A production node identity constant.
      */
-    public static final int CLASSNAME = 2005;
+    public static final int DOCUMENT_CLASS_TYPE = 2005;
 
     /**
      * A production node identity constant.
      */
-    public static final int DOCUMENT_OPTIONS = 2006;
+    public static final int PACKAGE_DECLARATION = 2006;
 
     /**
      * A production node identity constant.
      */
-    public static final int DOCUMENT_OPTION = 2007;
+    public static final int PACKAGE_OPTIONS = 2007;
 
     /**
      * A production node identity constant.
      */
-    public static final int DOCUMENT_FONTSIZE = 2008;
+    public static final int PACKAGE_NAME = 2008;
 
     /**
      * A production node identity constant.
      */
-    public static final int DOCUMENT_PAPERSIZE = 2009;
+    public static final int PACKAGE_PARAMETER = 2009;
 
     /**
      * A production node identity constant.
      */
-    public static final int DOCUMENT_COLUMNS = 2010;
+    public static final int WORD = 2010;
 
     /**
      * A production node identity constant.
      */
-    public static final int DOCUMENT_START_PAGE = 2011;
+    public static final int NUMBER = 2011;
 
     /**
      * A production node identity constant.
      */
-    public static final int DOCUMENT_OUTPUT_SIDE = 2012;
+    public static final int SPECIAL_CHAR = 2012;
 
     /**
      * A production node identity constant.
      */
-    public static final int DOCUMENT_OPEN = 2013;
+    public static final int WORD_NUMERIC = 2013;
 
     /**
      * A production node identity constant.
      */
-    public static final int PACKAGE_DECLARATION = 2014;
+    public static final int NUMERIC = 2014;
 
     /**
      * A production node identity constant.
      */
-    public static final int PACKAGE_OPTIONS = 2015;
+    public static final int NAME = 2015;
 
     /**
      * A production node identity constant.
      */
-    public static final int PACKAGE_NAME = 2016;
+    public static final int TEXT = 2016;
 
     /**
      * A production node identity constant.
      */
-    public static final int PACKAGE_PARAMETER = 2017;
+    public static final int COMMAND = 2017;
 
     /**
      * A production node identity constant.
      */
-    public static final int WORD = 2018;
+    public static final int COMMAND_PARAMETERS = 2018;
 
     /**
      * A production node identity constant.
      */
-    public static final int NUMBER = 2019;
+    public static final int COMMAND_OPTIONAL_PARAMETER = 2019;
 
     /**
      * A production node identity constant.
      */
-    public static final int SPECIAL_CHAR = 2020;
+    public static final int COMMAND_REQUIRED_PARAMETER = 2020;
 
     /**
      * A production node identity constant.
      */
-    public static final int WORD_NUMERIC = 2021;
+    public static final int COMMAND_CONTENT = 2021;
 
     /**
      * A production node identity constant.
      */
-    public static final int NUMERIC = 2022;
+    public static final int SPECIAL_COMMAND = 2022;
 
     /**
      * A production node identity constant.
      */
-    public static final int NAME = 2023;
+    public static final int ENVIRONMENT = 2023;
 
     /**
      * A production node identity constant.
      */
-    public static final int TEXT = 2024;
+    public static final int ENVIRONMENT_OPTIONAL_PARAMETER = 2024;
 
     /**
      * A production node identity constant.
      */
-    public static final int COMMAND = 2025;
+    public static final int ENVIRONMENT_REQUIRED_PARAMETER = 2025;
 
     /**
      * A production node identity constant.
      */
-    public static final int COMMAND_PARAMETERS = 2026;
+    public static final int BODY = 2026;
 
     /**
      * A production node identity constant.
      */
-    public static final int COMMAND_OPTIONAL_PARAMETER = 2027;
+    public static final int CONTENT = 2027;
 
     /**
      * A production node identity constant.
      */
-    public static final int COMMAND_REQUIRED_PARAMETER = 2028;
+    public static final int MATH = 2028;
 
     /**
      * A production node identity constant.
      */
-    public static final int COMMAND_CONTENT = 2029;
+    public static final int MATH_INLINE = 2029;
 
     /**
      * A production node identity constant.
      */
-    public static final int SPECIAL_COMMAND = 2030;
+    public static final int MATH_DISPLAY = 2030;
 
     /**
      * A production node identity constant.
      */
-    public static final int ENVIRONMENT = 2031;
+    public static final int STATEMENT = 2031;
 
     /**
      * A production node identity constant.
      */
-    public static final int ENVIRONMENT_OPTIONAL_PARAMETER = 2032;
+    public static final int RELATION = 2032;
 
     /**
      * A production node identity constant.
      */
-    public static final int ENVIRONMENT_REQUIRED_PARAMETER = 2033;
+    public static final int EXPRESSION = 2033;
 
     /**
      * A production node identity constant.
      */
-    public static final int BODY = 2034;
+    public static final int PLUS_OR_MINUS = 2034;
 
     /**
      * A production node identity constant.
      */
-    public static final int CONTENT = 2035;
+    public static final int COMPONENT = 2035;
 
     /**
      * A production node identity constant.
      */
-    public static final int ALLOWED_TOKENS = 2036;
+    public static final int FACTOR_EXT = 2036;
 
     /**
      * A production node identity constant.
      */
-    public static final int MATH = 2037;
+    public static final int BINARY_OPERATOR = 2037;
 
     /**
      * A production node identity constant.
      */
-    public static final int MATH_INLINE = 2038;
+    public static final int UNARY_OPERATOR = 2038;
 
     /**
      * A production node identity constant.
      */
-    public static final int MATH_DISPLAY = 2039;
+    public static final int UNARY_OPERATOR_LEFT = 2039;
 
     /**
      * A production node identity constant.
      */
-    public static final int STATEMENT = 2040;
+    public static final int FACTOR = 2040;
 
     /**
      * A production node identity constant.
      */
-    public static final int RELATION = 2041;
+    public static final int SPECIAL_SYMBOL = 2041;
 
     /**
      * A production node identity constant.
      */
-    public static final int EXPRESSION = 2042;
+    public static final int GREEK = 2042;
 
     /**
      * A production node identity constant.
      */
-    public static final int PLUS_OR_MINUS = 2043;
+    public static final int FUNCTION = 2043;
 
     /**
      * A production node identity constant.
      */
-    public static final int COMPONENT = 2044;
+    public static final int LOGLIKE_SYMBOL = 2044;
 
     /**
      * A production node identity constant.
      */
-    public static final int FACTOR_EXT = 2045;
+    public static final int OPERATOR_IDENT = 2045;
 
     /**
      * A production node identity constant.
      */
-    public static final int BINARY_OPERATOR = 2046;
+    public static final int FORMATTING_FUNCTION = 2046;
 
     /**
      * A production node identity constant.
      */
-    public static final int UNARY_OPERATOR = 2047;
+    public static final int CONSTRUCTION = 2047;
 
     /**
      * A production node identity constant.
      */
-    public static final int UNARY_OPERATOR_LEFT = 2048;
+    public static final int PARAMETER = 2048;
 
     /**
      * A production node identity constant.
      */
-    public static final int FACTOR = 2049;
+    public static final int SUBSCRIPT = 2049;
 
     /**
      * A production node identity constant.
      */
-    public static final int SPECIAL_SYMBOL = 2050;
-
-    /**
-     * A production node identity constant.
-     */
-    public static final int GREEK = 2051;
-
-    /**
-     * A production node identity constant.
-     */
-    public static final int FUNCTION = 2052;
-
-    /**
-     * A production node identity constant.
-     */
-    public static final int LOGLIKE_SYMBOL = 2053;
-
-    /**
-     * A production node identity constant.
-     */
-    public static final int OPERATOR_IDENT = 2054;
-
-    /**
-     * A production node identity constant.
-     */
-    public static final int FORMATTING_FUNCTION = 2055;
-
-    /**
-     * A production node identity constant.
-     */
-    public static final int CONSTRUCTION = 2056;
-
-    /**
-     * A production node identity constant.
-     */
-    public static final int PARAMETER = 2057;
-
-    /**
-     * A production node identity constant.
-     */
-    public static final int SUBSCRIPT = 2058;
-
-    /**
-     * A production node identity constant.
-     */
-    public static final int SUPERSCRIPT = 2059;
+    public static final int SUPERSCRIPT = 2050;
 }
